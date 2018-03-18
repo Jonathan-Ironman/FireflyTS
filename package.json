@@ -1,0 +1,40 @@
+{
+  "name": "firefly",
+  "version": "1.0.0",
+  "description": "Firefly TypeScript version",
+  "main": "main.ts",
+  "scripts": {
+    "test": "mocha",
+    "watch": "webpack --watch",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jonathan-Ironman/FireflyTS.git"
+  },
+  "keywords": [
+    "Firefly",
+    "Game",
+    "Space",
+    "Shooter"
+  ],
+  "author": "Jonathan IJzerman",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Jonathan-Ironman/FireflyTS/issues"
+  },
+  "homepage": "https://github.com/Jonathan-Ironman/FireflyTS#readme",
+  "devDependencies": {
+    "@types/jquery": "^3.3.1",
+    "chai": "^4.1.2",
+    "eslint": "^4.16.0",
+    "eslint-config-tc": "^2.3.0",
+    "mocha": "^5.0.0",
+    "ts-loader": "^3.5.0",
+    "tslint": "^5.9.1",
+    "tslint-clean-code": "^0.2.3",
+    "tslint-config-prettier": "^1.9.0",
+    "typescript": "^2.6.2",
+    "webpack": "^3.11.0"
+  }
+}

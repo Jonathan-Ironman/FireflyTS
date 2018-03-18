@@ -1,0 +1,43 @@
+html {
+  height: 100%;
+  width: 100%;
+  -webkit-user-select: none;
+  user-select: none;
+  overflow: hidden;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  cursor: url(../images/cursor/arrow.cur), default;
+  text-shadow: 0 0 13px #000, 0 -1px 2px #fff, 0 1px 2px #000;
+  color: white;
+}
+
+canvas {
+  width: 100%;
+  height: 100%;
+  /*background-image: url("../images/bg.jpg");
+    background-size: cover;
+    background-position: 50% 50%;*/
+}
+
+.resize {
+  cursor: url(../images/cursor/sizeall.cur), nesw-resize;
+}
+
+.alert {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -5%;
+  margin-left: -8%;
+  width: 16%;
+  height: 10%;
+  min-height: 100px;
+  min-width: 200px;
+  background: rgba(255, 80, 20, 0.8);
+  z-index: 10000;
+}
