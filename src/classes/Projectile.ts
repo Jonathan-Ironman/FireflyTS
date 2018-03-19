@@ -12,14 +12,14 @@ interface IProjectileType {
 
 const projectileTypes: { [key: string]: IProjectileType } = {
   dumbFire: {
-    acceleration: 5,
+    acceleration: 0.1,
     impactDamage: 10,
-    maxLifeSpan: 240
+    maxLifeSpan: 100
   },
   homing: {
-    acceleration: 5,
+    acceleration: 0.1,
     impactDamage: 10,
-    maxLifeSpan: 240,
+    maxLifeSpan: 100,
     turnSpeed: 0.8
   }
 };
@@ -41,7 +41,7 @@ export class Projectile extends Entity {
 
     this.health = 1;
     this.impactDamage = properties.impactDamage;
-    this.acceleration = properties.acceleration;
+    this.acceleration = owner.acceleration + properties.acceleration;
     this.maxLifeSpan = properties.maxLifeSpan;
     this.turnSpeed = properties.turnSpeed || 0;
   }

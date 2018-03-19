@@ -10,7 +10,7 @@ const explosionSprites = [
   { url: "images/sprites/explosions/explosion_2.png", frames: 46, duration: 180 },
   { url: "images/sprites/explosions/explosion_3.png", frames: 47, duration: 180 },
   { url: "images/sprites/explosions/explosion_4.png", frames: 45, duration: 180 },
-  { url: "images/sprites/explosions/explosion_5.png", frames: 54, duration: 180 }
+  { url: "images/sprites/explosions/explosion_5.png", frames: 44, duration: 180 }
 ];
 
 export class ExplosionSprite extends RenderObject {

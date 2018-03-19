@@ -22,7 +22,7 @@ export class Entity extends RenderObject {
   public status: IStatus = {};
   public faction?: string;
   public owner?: Entity;
-  protected acceleration = 0;
+  public acceleration = 0;
   protected turnSpeed = 0;
   protected initialized = false;
 

@@ -36,7 +36,7 @@ export class PlayerShip extends Ship {
       this.firePrimary();
     }
 
-    if (keysDown.Space) {
+    if (keysDown[" "]) {
       this.fireSecondary();
     }
 

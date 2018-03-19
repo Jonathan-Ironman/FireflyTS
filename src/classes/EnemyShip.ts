@@ -63,7 +63,11 @@ export class EnemyShip extends Ship {
     }
     this.move(directions);
 
-    if (Calculations.chance(1)) {
+    if (Calculations.chance(0.5)) {
+      this.firePrimary();
+    }
+
+    if (Calculations.chance(0.5)) {
       this.fireSecondary();
     }
   }

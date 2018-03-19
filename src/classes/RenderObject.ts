@@ -13,11 +13,11 @@ export class RenderObject {
     return objectList as ReadonlyArray<RenderObject>;
   };
   public center: Point = new Point(0, 0);
-  public angle: number = 0;
+  public angle: number;
   public width: number = 1;
   public height: number = 1;
   protected readonly image: HTMLImageElement;
-  protected maxLifeSpan: number = Infinity;
+  protected maxLifeSpan: number;
   private frameIndex: number = 0;
   private life: number = 0;
   private ticksCurrentFrame: number = 0;
@@ -25,10 +25,14 @@ export class RenderObject {
   constructor(private options: IRenderObect) {
     objectList.push(this);
 
+    this.angle = options.angle || 0;
+    this.maxLifeSpan = options.lifeSpan || Infinity;
+
     if (!images[options.imageSrc]) {
       this.image = new Image();
       this.image.src = options.imageSrc;
       this.image.onload = this.setDimensions.bind(this);
+      images[options.imageSrc] = this.image;
     } else {
       this.image = images[options.imageSrc];
       this.setDimensions();
@@ -69,13 +73,13 @@ export class RenderObject {
     if (this.options.sprite) {
       renderContext.drawImage(
         this.image,
-        this.frameIndex * this.width / this.options.sprite.frames,
+        this.frameIndex * this.width,
         0,
-        this.width / this.options.sprite.frames,
+        this.width,
         this.height,
         -this.width / 2,
         -this.height / 2,
-        this.width / this.options.sprite.frames,
+        this.width,
         this.height
       );
     } else {
