@@ -1,6 +1,7 @@
 import * as Calculations from "../Calculations";
 import { IDirection } from "../interfaces/IDirection";
 import { Entity } from "./Entity";
+import { ExplosionSprite } from "./Explosion";
 import { doubleLaserShot } from "./Laser";
 import { Point } from "./Point";
 import { Projectile } from "./Projectile";
@@ -30,6 +31,12 @@ export class Ship extends Entity {
       this.cooldown--;
     }
     super.update();
+  }
+
+  public destroy() {
+    // tslint:disable-next-line:no-unused-expression
+    new ExplosionSprite(this.center);
+    super.destroy();
   }
 
   protected firePrimary() {

@@ -24,7 +24,7 @@ export class RenderObject {
   protected readonly image: HTMLImageElement;
   protected maxLifeSpan: number;
   private frameIndex: number = 0;
-  private life: number = 0;
+  private lifeSpan: number = 0;
   private ticksCurrentFrame: number = 0;
 
   constructor(private options: IRenderObect) {
@@ -53,11 +53,11 @@ export class RenderObject {
   }
 
   public update() {
-    if (this.life > this.maxLifeSpan) {
+    if (this.lifeSpan > this.maxLifeSpan) {
       return this.destroy();
     }
 
-    this.life++;
+    this.lifeSpan++;
     this.spriteActions();
     this.draw();
   }

@@ -56,6 +56,7 @@ export class Entity extends RenderObject {
       this === entity ||
       this.owner === entity ||
       this === entity.owner ||
+      this.owner === entity.owner ||
       this.center.x + this.width / 2 < entity.center.x - entity.width / 2 ||
       this.center.y + this.height / 2 < entity.center.y - entity.height / 2 ||
       this.center.x - this.width / 2 > entity.center.x + entity.width / 2 ||
@@ -75,9 +76,9 @@ export class Entity extends RenderObject {
     const angle = this.angle * (Math.PI / 180);
 
     const forward = directions.forward ? 1 : 0;
-    const back = directions.back ? -0.3 : 0;
-    const left = directions.left ? 0.4 : 0;
-    const right = directions.right ? -0.4 : 0;
+    const back = directions.back ? -0.4 : 0;
+    const left = directions.left ? 0.5 : 0;
+    const right = directions.right ? -0.5 : 0;
 
     // Forward and backward.
     this.speedX =
@@ -94,8 +95,8 @@ export class Entity extends RenderObject {
       (left + right) * this.acceleration * Math.sin(angle - Math.PI / 2);
 
     // Friction.
-    this.speedX *= 0.985;
-    this.speedY *= 0.985;
+    this.speedX *= 0.97;
+    this.speedY *= 0.97;
 
     this.center = new Point(
       this.center.x + this.speedX,
