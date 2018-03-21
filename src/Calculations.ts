@@ -1,6 +1,6 @@
-﻿import { Point } from "./classes/Point";
+﻿import { Entity } from './classes/Entity';
+import { Point } from "./classes/Point";
 import { Ship } from "./classes/Ship";
-import { Entity } from './classes/Entity';
 
 // Find angle between two points.
 export function getAngle(p1: Point, p2: Point) {
@@ -41,6 +41,23 @@ export function pointFromAngle(
   y = point.y + y;
 
   return { x, y };
+}
+
+export function getRandomPointOnCanvas(renderCtx :CanvasRenderingContext2D) {
+  return new Point(
+    chance(50)
+      ? getRandomInt(50, 300)
+      : getRandomInt(
+          renderCtx.canvas.width - 250,
+          renderCtx.canvas.width - 400
+        ),
+    chance(50)
+      ? getRandomInt(50, 300)
+      : getRandomInt(
+          renderCtx.canvas.height - 250,
+          renderCtx.canvas.height - 400
+        )
+  )
 }
 
 // Returns a random number between min and max.
@@ -124,7 +141,7 @@ export function CCW(p1: Point, p2: Point, p3: Point) {
 
 export function isIntersecting(p1: Point, p2: Point, p3: Point, p4: Point) {
   return (
-    CCW(p1, p3, p4) != CCW(p2, p3, p4) && CCW(p1, p2, p3) !== CCW(p1, p2, p4)
+    CCW(p1, p3, p4) !== CCW(p2, p3, p4) && CCW(p1, p2, p3) !== CCW(p1, p2, p4)
   );
 }
 

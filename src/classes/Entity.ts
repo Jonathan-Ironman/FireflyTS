@@ -18,7 +18,7 @@ export class Entity extends RenderObject {
   public maxHealth = Infinity;
   public speedX = 0;
   public speedY = 0;
-  public impactDamage = 0;
+  public impactDamage = 1;
   public status: IStatus = {};
   public faction?: string;
   public owner?: Entity;
@@ -54,6 +54,8 @@ export class Entity extends RenderObject {
   public isCollidingWith(entity: Entity) {
     return !(
       this === entity ||
+      this.owner === entity ||
+      this === entity.owner ||
       this.center.x + this.width / 2 < entity.center.x - entity.width / 2 ||
       this.center.y + this.height / 2 < entity.center.y - entity.height / 2 ||
       this.center.x - this.width / 2 > entity.center.x + entity.width / 2 ||
@@ -63,6 +65,7 @@ export class Entity extends RenderObject {
 
   public init() {
     if (!this.initialized) {
+      this.initialized = true;
       this.maxHealth = this.health;
     }
   }

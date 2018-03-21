@@ -2,31 +2,14 @@ import * as Calculations from "../Calculations";
 import { IDirection } from "../interfaces/IDirection";
 import { Entity } from "./Entity";
 import { PlayerShip } from "./PlayerShip";
-import { Point } from "./Point";
+import { Point } from './Point';
 import { Ship } from "./Ship";
 
 export class EnemyShip extends Ship {
   public health = 50;
   public shield = 0;
 
-  constructor(
-    renderCtx: CanvasRenderingContext2D,
-    imageSrc = "images/objects/enemy1.png",
-    initialPosition = new Point(
-      Calculations.chance(50)
-        ? Calculations.getRandomInt(50, 300)
-        : Calculations.getRandomInt(
-            renderCtx.canvas.width - 250,
-            renderCtx.canvas.width - 400
-          ),
-      Calculations.chance(50)
-        ? Calculations.getRandomInt(50, 300)
-        : Calculations.getRandomInt(
-            renderCtx.canvas.height - 250,
-            renderCtx.canvas.height - 400
-          )
-    )
-  ) {
+  constructor(imageSrc = "images/objects/enemy1.png", initialPosition: Point) {
     super(imageSrc, initialPosition);
   }
 

@@ -12,6 +12,11 @@ export class RenderObject {
   public static getObjectList = () => {
     return objectList as ReadonlyArray<RenderObject>;
   };
+  public static setDimensionsForImage = (imageSrc: string) => {
+    objectList
+      .filter(o => o.image.src.endsWith(imageSrc))
+      .forEach(o => o.setDimensions());
+  };
   public center: Point = new Point(0, 0);
   public angle: number;
   public width: number = 1;
@@ -31,7 +36,8 @@ export class RenderObject {
     if (!images[options.imageSrc]) {
       this.image = new Image();
       this.image.src = options.imageSrc;
-      this.image.onload = this.setDimensions.bind(this);
+      this.image.onload = () =>
+        RenderObject.setDimensionsForImage(options.imageSrc);
       images[options.imageSrc] = this.image;
     } else {
       this.image = images[options.imageSrc];
@@ -87,7 +93,6 @@ export class RenderObject {
     }
 
     renderContext.rotate(-angleInRadians);
-
     renderContext.translate(-x, -y);
   }
 
