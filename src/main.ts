@@ -11,7 +11,7 @@ import "./ErrorHandler";
 import { UserInterface } from "./UserInterface";
 
 const Firefly = new PlayerShip();
-const enemies = 12;
+const enemies = 8;
 const gameObjects = RenderObject.getObjectList();
 const playlist = [
   "sound/music/ambientmain_0.ogg",
