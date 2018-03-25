@@ -14,7 +14,7 @@ export class RenderObject {
   }
   public static setDimensionsForImage(imageSrc: string) {
     objectList
-      .filter(o => o.image.src.endsWith(imageSrc))
+      .filter(o => o.image.src === imageSrc)
       .forEach(o => o.setDimensions());
   }
   public static displaceAll(pointA: Point, pointB: Point) {
@@ -28,7 +28,7 @@ export class RenderObject {
   public angle: number;
   public width: number = 1;
   public height: number = 1;
-  protected readonly image: HTMLImageElement;
+  public image: HTMLImageElement;
   protected maxLifeSpan: number;
   private frameIndex: number = 0;
   private lifeSpan: number = 0;
@@ -43,8 +43,7 @@ export class RenderObject {
     if (!images[options.imageSrc]) {
       this.image = new Image();
       this.image.src = options.imageSrc;
-      this.image.onload = () =>
-        RenderObject.setDimensionsForImage(options.imageSrc);
+      this.image.onload = this.onImageLoad.bind(this);
       images[options.imageSrc] = this.image;
     } else {
       this.image = images[options.imageSrc];
@@ -101,6 +100,10 @@ export class RenderObject {
 
     renderContext.rotate(-angleInRadians);
     renderContext.translate(-x, -y);
+  }
+
+  protected onImageLoad() {
+    RenderObject.setDimensionsForImage(this.image.src);
   }
 
   private setDimensions() {

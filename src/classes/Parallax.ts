@@ -2,24 +2,22 @@ import { IRenderObect } from "../interfaces/IRenderObject";
 import { Point } from "./Point";
 import { RenderObject } from "./RenderObject";
 
-const bgImageSrc = "images/bg.jpg";
-const bgImage = new Image();
-let pattern: CanvasPattern;
-
 let renderContext: CanvasRenderingContext2D;
 export class Parallax extends RenderObject {
   public static setRenderContext(ctx: CanvasRenderingContext2D) {
     renderContext = ctx;
-    bgImage.src = bgImageSrc;
-    bgImage.onload = () => {
-      pattern = renderContext.createPattern(bgImage, "repeat");
-    };
   }
+  public static setPatternForImages(imageSrc: string, pattern: CanvasPattern) {
+    RenderObject.getObjectList()
+      .filter((o): o is Parallax => o.image.src === imageSrc)
+      .forEach(o => (o.pattern = pattern));
+  }
+  public pattern: CanvasPattern | undefined;
   private previousPosition = new Point(0, 0);
 
-  constructor(private level: number) {
+  constructor(private level: number, imageSrc: string) {
     super({
-      imageSrc: bgImageSrc,
+      imageSrc,
       initialPosition: new Point(0, 0)
     });
   }
@@ -31,18 +29,27 @@ export class Parallax extends RenderObject {
   }
 
   protected draw() {
-    if (!pattern) {
+    if (!this.pattern) {
       return;
     }
     const x = this.center.x;
     const y = this.center.y;
 
-    renderContext.globalAlpha = 0.5;
     renderContext.translate(x, y);
-    renderContext.fillStyle = pattern;
-    renderContext.fillRect(-x, -y, renderContext.canvas.width, renderContext.canvas.height);
+    renderContext.fillStyle = this.pattern;
+    renderContext.fillRect(
+      -x,
+      -y,
+      renderContext.canvas.width,
+      renderContext.canvas.height
+    );
     renderContext.translate(-x, -y);
-    renderContext.globalAlpha = 1;
+  }
+
+  protected onImageLoad() {
+    super.onImageLoad();
+    this.pattern = renderContext.createPattern(this.image, "repeat");
+    Parallax.setPatternForImages(this.image.src, this.pattern);
   }
 
   private displace() {

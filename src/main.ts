@@ -18,9 +18,9 @@ RenderObject.setRenderContext(renderingContext);
 Laser.setRenderContext(renderingContext);
 Parallax.setRenderContext(renderingContext);
 
-new Parallax(2);
-new Parallax(4);
-new Parallax(512);
+new Parallax(1.05, "images/repeat.png");
+new Parallax(4, "images/stars.png");
+new Parallax(32, "images/stars.png");
 const Firefly = new PlayerShip();
 const enemies = 8;
 const gameObjects = RenderObject.getObjectList();
