@@ -3,6 +3,7 @@ import { EnemyShip } from "./classes/EnemyShip";
 import { Entity } from "./classes/Entity";
 import { InputController } from "./classes/InputController";
 import * as Laser from "./classes/Laser";
+import { Parallax } from "./classes/Parallax";
 import { PlayerShip } from "./classes/PlayerShip";
 import { Playlist } from "./classes/Playlist";
 import { RenderObject } from "./classes/RenderObject";
@@ -10,6 +11,16 @@ import { SoundPool } from "./classes/SoundPool";
 import "./ErrorHandler";
 import { UserInterface } from "./UserInterface";
 
+const canvas = document.createElement("canvas");
+const renderingContext = canvas.getContext("2d") as CanvasRenderingContext2D;
+
+RenderObject.setRenderContext(renderingContext);
+Laser.setRenderContext(renderingContext);
+Parallax.setRenderContext(renderingContext);
+
+new Parallax(2);
+new Parallax(4);
+new Parallax(512);
 const Firefly = new PlayerShip();
 const enemies = 8;
 const gameObjects = RenderObject.getObjectList();
@@ -20,15 +31,6 @@ const playlist = [
   "sound/music/dust.mp3"
 ];
 const backgroundAudio = new Playlist(playlist, 0.2, true);
-
-const canvas = document.createElement("canvas");
-const renderingContext = canvas.getContext("2d") as CanvasRenderingContext2D;
-
-RenderObject.setRenderContext(renderingContext);
-Laser.setRenderContext(renderingContext);
-
-const backgroundImage = new Image();
-backgroundImage.src = "images/bg.jpg";
 
 InputController.init();
 
@@ -69,9 +71,7 @@ function gameLoop() {
   }
 
   requestAnimationFrame(gameLoop);
-
   renderingContext.clearRect(0, 0, canvas.width, canvas.height);
-  renderingContext.drawImage(backgroundImage, 0, 0);
 
   objectList.forEach(o => o.update());
 
