@@ -9,14 +9,17 @@ export class RenderObject {
   public static setRenderContext(ctx: CanvasRenderingContext2D) {
     renderContext = ctx;
   }
+
   public static getObjectList() {
     return objectList as ReadonlyArray<RenderObject>;
   }
+
   public static setDimensionsForImage(imageSrc: string) {
     objectList
       .filter(o => o.image.src === imageSrc)
       .forEach(o => o.setDimensions());
   }
+
   public static displaceAll(pointA: Point, pointB: Point) {
     const displaceX = pointA.x - pointB.x;
     const displaceY = pointA.y - pointB.y;
@@ -24,6 +27,7 @@ export class RenderObject {
       o.center = new Point(o.center.x + displaceX, o.center.y + displaceY);
     });
   }
+
   public center: Point = new Point(0, 0);
   public angle: number;
   public width: number = 1;
