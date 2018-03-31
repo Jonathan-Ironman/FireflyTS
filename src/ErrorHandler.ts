@@ -1,4 +1,4 @@
-﻿function alert(message: string, duration: number) {
+﻿function alert(message: string | Event, duration: number) {
   duration = duration || 1500;
   const elem = $("<div/>", {
     class: "alert popup",

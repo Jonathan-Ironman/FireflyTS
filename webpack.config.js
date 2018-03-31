@@ -1,7 +1,9 @@
 const path = require('path');
 
 module.exports = {
-    entry: "./src/main.ts",
+    entry: {
+        app: "./src/main.ts",
+    },
     devtool: "inline-source-map",
     output: {
         filename: "app.min.js",
@@ -11,12 +13,13 @@ module.exports = {
         extensions: [".ts", ".tsx", ".js"]
     },
     module: {
-        loaders: [
-            // All files with a '.ts' or '.tsx' extension will be handled by 'ts-loader'
-            {
-                test: /\.tsx?$/,
+        rules: [{
+            test: /\.tsx?$/, // include .tsx files
+            enforce: "pre", // preload the ts loader
+            exclude: /node_modules/, // exclude any and all files in the node_modules folder
+            use: [{
                 loader: "ts-loader"
-            }
-        ]
+            }]
+        }]
     }
-}
+};
