@@ -4,14 +4,15 @@ module.exports = {
     entry: {
         app: "./src/main.ts",
     },
-    devtool: "inline-source-map",
+    devtool: "source-map",
     output: {
         filename: "app.min.js",
-        path: path.resolve(__dirname, 'dist')
+        path: path.resolve(__dirname, 'public/dist')
     },
     resolve: {
         extensions: [".ts", ".tsx", ".js"]
     },
+    mode: 'development',
     module: {
         rules: [{
             test: /\.tsx?$/, // include .tsx files

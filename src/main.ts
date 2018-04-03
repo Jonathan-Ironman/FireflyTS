@@ -18,9 +18,9 @@ RenderObject.setRenderContext(renderingContext);
 Laser.setRenderContext(renderingContext);
 Parallax.setRenderContext(renderingContext);
 
-new Parallax(1.05, "images/repeat.png");
-new Parallax(4, "images/stars.png");
-new Parallax(32, "images/stars.png");
+let _ = new Parallax(1.05, "images/repeat.png");
+_ = new Parallax(4, "images/stars.png");
+_ = new Parallax(32, "images/stars.png");
 const Firefly = new PlayerShip();
 const enemies = 8;
 const gameObjects = RenderObject.getObjectList();
@@ -36,7 +36,7 @@ InputController.init();
 
 // Initialize game.
 document.addEventListener("DOMContentLoaded", () => {
-  //backgroundAudio.play();
+  // backgroundAudio.play();
 
   // disableKeys([KEYS.F1, KEYS.F5]);
   document.body.appendChild(canvas);
@@ -89,7 +89,7 @@ function gameLoop() {
   UserInterface.showHealth(renderingContext, Firefly);
 }
 
-//InputController.bindKey("Escape", UserInterface.toggleMenu);
+// InputController.bindKey("Escape", UserInterface.toggleMenu);
 InputController.bindKey("Escape", togglePause);
 
 function newGame() {

@@ -3,6 +3,14 @@
 	// for the documentation about the extensions.json format
 	"recommendations": [
 		// Extension identifier format: ${publisher}.${name}. Example: vscode.csharp
-		
+		"msjsdiag.debugger-for-chrome",
+		"dbaeumer.vscode-eslint",
+		"dbaeumer.jshint",
+		"ritwickdey.liveserver",
+		"eg2.vscode-npm-script",
+		"eg2.tslint",
+		"christian-kohler.npm-intellisense",
+		"rbbit.typescript-hero",
+		"eamodio.gitlens"
 	]
 }
