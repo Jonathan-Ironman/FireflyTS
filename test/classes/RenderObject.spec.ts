@@ -1,8 +1,8 @@
-import { expect } from "chai";
+import { expect } from 'chai';
 import "mocha";
-import { IRenderObect } from "../interfaces/IRenderObject";
-import { Point } from "./Point";
-import { RenderObject } from "./RenderObject";
+import { Point } from "../../src/classes/Point";
+import { RenderObject } from "../../src/classes/RenderObject";
+import { IRenderObect } from "../../src/interfaces/IRenderObject";
 
 const imageSrc = "image/objects/test80x100.png";
 

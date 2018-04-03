@@ -1,19 +1,26 @@
 const path = require('path');
 
 module.exports = {
-    entry: "./src/main.ts",
-    devtool: "inline-source-map",
+    entry: {
+        app: "./src/main.ts",
+    },
+    devtool: "source-map",
     output: {
         filename: "app.min.js",
-        path: path.resolve(__dirname, 'dist')
+        path: path.resolve(__dirname, 'public/dist')
     },
     resolve: {
         extensions: [".ts", ".tsx", ".js"]
     },
+    mode: 'development',
     module: {
-        loaders: [
-            // All files with a '.ts' or '.tsx' extension will be handled by 'ts-loader'
-            { test: /\.tsx?$/, loader: "ts-loader" }
-        ]
+        rules: [{
+            test: /\.tsx?$/, // include .tsx files
+            enforce: "pre", // preload the ts loader
+            exclude: /node_modules/, // exclude any and all files in the node_modules folder
+            use: [{
+                loader: "ts-loader"
+            }]
+        }]
     }
-}
+};

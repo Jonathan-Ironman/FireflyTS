@@ -6,35 +6,38 @@
         {
             "type": "npm",
             "script": "test",
-            "problemMatcher": [],
             "group": {
                 "kind": "test",
                 "isDefault": true
-            }
+            },
+            "problemMatcher": "$tsc"
         },
         {
-            "type": "typescript",
-            "tsconfig": "tsconfig.json",
-            "problemMatcher": [
-                "$tsc"
-            ],
+            "type": "npm",
+            "script": "build",
+            "identifier": "build",
+            "promptOnClose": true,
             "group": {
                 "kind": "build",
                 "isDefault": true
             }
         },
         {
-            "type": "typescript",
-            "tsconfig": "tsconfig.json",
-            "option": "watch",
+            "type": "npm",
+            "script": "watch",
             "problemMatcher": [
                 "$tsc-watch"
-            ]
+            ],
+            "isBackground": true
         },
         {
             "type": "npm",
-            "script": "watch",
-            "problemMatcher": []
+            "script": "start:dev",
+            "identifier": "start",
+            "problemMatcher": [
+                "$tsc"
+            ],
+            "isBackground": true
         }
     ]
 }
