@@ -1,9 +1,9 @@
 language: node_js
 node_js:
   - "8"
-script: npm run-script build
-after_script:
-  - npm run-script test
+before_script:
+  - npm run-script build
+script: npm run-script test
 cache:
   directories:
     - "node_modules"
