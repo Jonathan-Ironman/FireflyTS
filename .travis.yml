@@ -1,3 +1,14 @@
+dist: trusty
+addons:
+  chrome: stable
 language: node_js
 node_js:
-  - "iojs"
+  - "8"
+before_script:
+  - "sudo chown root /opt/google/chrome/chrome-sandbox"
+  - "sudo chmod 4755 /opt/google/chrome/chrome-sandbox"
+  - npm run-script build
+script: npm run-script test
+cache:
+  directories:
+    - "node_modules"

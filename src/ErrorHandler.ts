@@ -1,4 +1,4 @@
-﻿function alert(message: string | Event, duration: number) {
+﻿function alert_msg(message: string | Event, duration: number) {
   duration = duration || 1500;
   const elem = $("<div/>", {
     class: "alert popup",
@@ -19,6 +19,6 @@ window.onerror = function errorHandler(
   column,
   errObj
 ) {
-  alert(errorMsg, 4000);
+  alert_msg(errorMsg, 4000);
   return onError(errorMsg, url, lineNumber, column, errObj);
 };
