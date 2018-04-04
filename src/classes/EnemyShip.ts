@@ -1,7 +1,7 @@
 import * as Calculations from "../Calculations";
 import { IDirection } from "../interfaces/IDirection";
 import { Entity } from "./Entity";
-import { PlayerShip } from "./PlayerShip";
+import { PlayerShip } from './PlayerShip';
 import { Point } from './Point';
 import { Ship } from "./Ship";
 
@@ -19,7 +19,8 @@ export class EnemyShip extends Ship {
   }
 
   private findTarget() {
-    return Entity.getEntityList().find(p => p instanceof PlayerShip);
+    const entities = Entity.getEntityList();
+    return new PlayerShip(); //entities.find(p => p instanceof PlayerShip);
   }
 
   private actions() {
