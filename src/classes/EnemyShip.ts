@@ -1,8 +1,8 @@
-import * as Calculations from "../Calculations";
+import * as Calculations from "../helpers/Calculations";
 import { IDirection } from "../interfaces/IDirection";
 import { Entity } from "./Entity";
-import { PlayerShip } from './PlayerShip';
-import { Point } from './Point';
+import { PlayerShip } from "./PlayerShip";
+import { Point } from "./Point";
 import { Ship } from "./Ship";
 
 export class EnemyShip extends Ship {
@@ -19,8 +19,7 @@ export class EnemyShip extends Ship {
   }
 
   private findTarget() {
-    const entities = Entity.getEntityList();
-    return new PlayerShip(); //entities.find(p => p instanceof PlayerShip);
+    return Entity.getEntityList().find(p => p instanceof PlayerShip);
   }
 
   private actions() {
