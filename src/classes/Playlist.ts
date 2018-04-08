@@ -1,4 +1,4 @@
-﻿import * as Calculations from "../Calculations";
+﻿import * as Calculations from "../helpers/Calculations";
 
 export class Playlist {
   private player = new Audio();

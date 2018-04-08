@@ -1,4 +1,4 @@
-import { getRandomInt } from "../Calculations";
+import { getRandomInt } from "../helpers/Calculations";
 import { Entity } from "./Entity";
 import { ExplosionSprite } from "./Explosion";
 import { Point } from "./Point";

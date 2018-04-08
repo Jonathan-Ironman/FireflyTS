@@ -1,6 +1,6 @@
-﻿import { Entity } from './classes/Entity';
-import { Point } from "./classes/Point";
-import { Ship } from "./classes/Ship";
+﻿import { Entity } from "../classes/Entity";
+import { Point } from "../classes/Point";
+import { Ship } from "../classes/Ship";
 
 // Find angle between two points.
 export function getAngle(p1: Point, p2: Point) {
@@ -43,7 +43,7 @@ export function pointFromAngle(
   return { x, y };
 }
 
-export function getRandomPointOnCanvas(renderCtx :CanvasRenderingContext2D) {
+export function getRandomPointOnCanvas(renderCtx: CanvasRenderingContext2D) {
   return new Point(
     chance(50)
       ? getRandomInt(50, 300)
@@ -57,7 +57,7 @@ export function getRandomPointOnCanvas(renderCtx :CanvasRenderingContext2D) {
           renderCtx.canvas.height - 250,
           renderCtx.canvas.height - 400
         )
-  )
+  );
 }
 
 // Returns a random number between min and max.
@@ -153,7 +153,10 @@ export function lineIntersectsEntity(
   // Corners.
   const p1 = { x: entity.center.x, y: entity.center.y };
   const p2 = { x: entity.center.x + entity.width, y: entity.center.y };
-  const p3 = { x: entity.center.x + entity.width, y: entity.center.y + entity.height };
+  const p3 = {
+    x: entity.center.x + entity.width,
+    y: entity.center.y + entity.height
+  };
   const p4 = { x: entity.center.x, y: entity.center.y + entity.height };
 
   // Check if bullet line intersects the ship outline.

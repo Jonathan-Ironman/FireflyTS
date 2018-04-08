@@ -1,4 +1,3 @@
-import * as Calculations from "./Calculations";
 import { EnemyShip } from "./classes/EnemyShip";
 import { Entity } from "./classes/Entity";
 import { InputController } from "./classes/InputController";
@@ -8,8 +7,8 @@ import { PlayerShip } from "./classes/PlayerShip";
 import { Playlist } from "./classes/Playlist";
 import { RenderObject } from "./classes/RenderObject";
 import { SoundPool } from "./classes/SoundPool";
-import "./ErrorHandler";
-import { UserInterface } from "./UserInterface";
+import * as Calculations from "./helpers/Calculations";
+import { UserInterface } from "./helpers/UserInterface";
 
 const canvas = document.createElement("canvas");
 const renderingContext = canvas.getContext("2d") as CanvasRenderingContext2D;
@@ -22,7 +21,7 @@ let _ = new Parallax(1.05, "images/repeat.png");
 _ = new Parallax(4, "images/stars.png");
 _ = new Parallax(32, "images/stars.png");
 const Firefly = new PlayerShip();
-const enemies = 8;
+const enemies = 4;
 const gameObjects = RenderObject.getObjectList();
 const playlist = [
   "sound/music/ambientmain_0.ogg",

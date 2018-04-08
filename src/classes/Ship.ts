@@ -1,4 +1,4 @@
-import * as Calculations from "../Calculations";
+import * as Calculations from "../helpers/Calculations";
 import { IDirection } from "../interfaces/IDirection";
 import { Entity } from "./Entity";
 import { ExplosionSprite } from "./Explosion";

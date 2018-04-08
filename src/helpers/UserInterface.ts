@@ -1,4 +1,4 @@
-﻿import { Entity } from "./classes/Entity";
+﻿import { Entity } from "../classes/Entity";
 export const UserInterface = {
   showHealth(ctx: CanvasRenderingContext2D, entity: Entity) {
     const width = ctx.canvas.width * entity.health / entity.maxHealth;

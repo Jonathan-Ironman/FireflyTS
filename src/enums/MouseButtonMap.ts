@@ -1,5 +1,5 @@
 export enum MouseButtonMap {
-  LEFT,
+  LEFT = 0,
   MIDDLE,
   RIGHT
 }

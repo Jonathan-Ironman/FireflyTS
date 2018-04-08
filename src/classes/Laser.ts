@@ -1,4 +1,4 @@
-import * as Calculations from "../Calculations";
+import * as Calculations from "../helpers/Calculations";
 import { Entity } from "./Entity";
 import { Point } from "./Point";
 import { Ship } from "./Ship";
