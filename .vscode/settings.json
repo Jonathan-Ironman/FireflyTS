@@ -1,8 +1,12 @@
 {
-    "liveServer.settings.root": "./public",
-    "liveServer.settings.NoBrowser": true,
-    "typescript.tsdk": "node_modules\\typescript\\lib",
-    "tsimporter.doubleQuotes": true,
-    "typescriptHero.imports.stringQuoteStyle": "\"",
-    "editor.formatOnSave": true
+  "liveServer.settings.root": "./public",
+  "liveServer.settings.NoBrowser": true,
+  "typescript.tsdk": "node_modules\\typescript\\lib",
+  "tsimporter.doubleQuotes": true,
+  "typescriptHero.imports.stringQuoteStyle": "\"",
+  "editor.formatOnSave": true,
+  "files.exclude": {
+    "**/.vs": true,
+    "**/node_modules": true
+  }
 }
