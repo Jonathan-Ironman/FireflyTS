@@ -14,7 +14,7 @@ describe("RenderObject", () => {
     RenderObject.getObjectList().forEach(o => o.destroy());
   });
 
-  it("Object should get the correct dimensions once image is loaded", async () => {
+  it.skip("Object should get the correct dimensions once image is loaded", async () => {
     const renderObject = new RenderObject(objectConfig);
     await expect(RenderObject.setDimensionsForImage).toBeCalled;
     await expect(renderObject.width).toBe(80);
