@@ -4,7 +4,7 @@
   "description": "Firefly TypeScript version",
   "main": "main.ts",
   "scripts": {
-    "test": "karma start",
+    "test": "jest",
     "watch": "webpack --watch",
     "build": "webpack"
   },
@@ -12,12 +12,7 @@
     "type": "git",
     "url": "git+https://github.com/Jonathan-Ironman/FireflyTS.git"
   },
-  "keywords": [
-    "Firefly",
-    "Game",
-    "Space",
-    "Shooter"
-  ],
+  "keywords": ["Firefly", "Game", "Space", "Shooter"],
   "author": "Jonathan IJzerman",
   "license": "MIT",
   "bugs": {
@@ -25,19 +20,13 @@
   },
   "homepage": "https://github.com/Jonathan-Ironman/FireflyTS#readme",
   "devDependencies": {
-    "@types/chai": "^4.1.2",
-    "@types/jasmine": "^2.8.6",
+    "@types/jest": "^22.2.2",
     "@types/jquery": "^3.3.1",
     "@types/node": "^9.6.1",
-    "chai": "^4.1.2",
     "eslint": "^4.19.1",
     "eslint-config-tc": "^2.3.0",
-    "jasmine": "^3.1.0",
-    "karma": "^2.0.0",
-    "karma-chrome-launcher": "^2.2.0",
-    "karma-cli": "^1.0.1",
-    "karma-jasmine": "^1.1.1",
-    "karma-typescript": "^3.0.12",
+    "jest": "^22.4.3",
+    "ts-jest": "^22.4.2",
     "ts-loader": "^4.1.0",
     "ts-node": "^5.0.1",
     "tslint": "^5.9.1",
@@ -46,5 +35,12 @@
     "typescript": "^2.8.1",
     "webpack": "^4.4.1",
     "webpack-cli": "^2.0.13"
+  },
+  "jest": {
+    "moduleFileExtensions": ["ts", "tsx", "js"],
+    "transform": {
+      "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "/test/.*\\.(ts|tsx|js)$"
   }
 }

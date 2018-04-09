@@ -1,5 +1,3 @@
-import { expect } from "chai";
-import "jasmine";
 import { Point } from "../../src/classes/Point";
 import { RenderObject } from "../../src/classes/RenderObject";
 import { IRenderObect } from "../../src/interfaces/IRenderObject";
@@ -13,12 +11,12 @@ describe("RenderObject", () => {
       initialPosition: new Point(10, 20)
     };
     const result = new RenderObject(renderObject);
-    expect(RenderObject.getObjectList().length).to.equal(1);
+    expect(RenderObject.getObjectList().length).toBe(1);
   });
 
   it("Remove objects from the object list once destroyed", () => {
     const renderObject = RenderObject.getObjectList()[0];
     renderObject.destroy();
-    expect(RenderObject.getObjectList().length).to.equal(0);
+    expect(RenderObject.getObjectList().length).toBe(0);
   });
 });
