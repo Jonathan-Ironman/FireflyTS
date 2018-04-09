@@ -6,7 +6,8 @@
   "scripts": {
     "test:travis":
       "jest --coverage  --collectCoverageFrom=src/**/*.ts && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
-    "test": "jest --coverage --collectCoverageFrom=src/**/*.ts",
+    "test": "jest",
+    "test:coverage": "jest --coverage --collectCoverageFrom=src/**/*.ts",
     "watch": "webpack --watch",
     "build": "webpack"
   },
