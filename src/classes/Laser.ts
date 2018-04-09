@@ -1,8 +1,8 @@
 import * as Calculations from "../helpers/Calculations";
+import { SoundPool } from "../helpers/SoundPool";
 import { Entity } from "./Entity";
 import { Point } from "./Point";
 import { Ship } from "./Ship";
-import { SoundPool } from "./SoundPool";
 
 const laserSound = new SoundPool("sound/effects/laser.wav", 0.02, 200);
 let renderContext: CanvasRenderingContext2D;

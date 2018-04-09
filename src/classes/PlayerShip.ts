@@ -1,6 +1,6 @@
 import { MouseButtonMap } from "../enums/MouseButtonMap";
+import { InputController } from "../helpers/InputController";
 import { IDirection } from "../interfaces/IDirection";
-import { InputController } from "./InputController";
 import { Point } from "./Point";
 import { RenderObject } from "./RenderObject";
 import { Ship } from "./Ship";
@@ -26,10 +26,10 @@ export class PlayerShip extends Ship {
 
     const keysDown = InputController.getKeysDown();
     const directions: IDirection = {
-      back: keysDown.ArrowDown || keysDown.s,
-      forward: keysDown.ArrowUp || keysDown.w,
-      left: keysDown.ArrowLeft || keysDown.a,
-      right: keysDown.ArrowRight || keysDown.d
+      back: keysDown.ArrowDown || keysDown.KeyS,
+      forward: keysDown.ArrowUp || keysDown.KeyW,
+      left: keysDown.ArrowLeft || keysDown.KeyA,
+      right: keysDown.ArrowRight || keysDown.KeyD
     };
     const currentPosition = this.center;
     this.move(directions);
@@ -40,7 +40,7 @@ export class PlayerShip extends Ship {
       this.firePrimary();
     }
 
-    if (keysDown[" "]) {
+    if (keysDown.Space) {
       this.fireSecondary();
     }
 

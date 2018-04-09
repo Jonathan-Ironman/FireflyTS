@@ -1,4 +1,4 @@
-export enum factions {
-  "Terran",
-  "Shivan"
+export enum Factions {
+  Terran,
+  Shivan
 }

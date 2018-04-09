@@ -1,13 +1,12 @@
 import { EnemyShip } from "./classes/EnemyShip";
 import { Entity } from "./classes/Entity";
-import { InputController } from "./classes/InputController";
 import * as Laser from "./classes/Laser";
 import { Parallax } from "./classes/Parallax";
 import { PlayerShip } from "./classes/PlayerShip";
 import { Playlist } from "./classes/Playlist";
 import { RenderObject } from "./classes/RenderObject";
-import { SoundPool } from "./classes/SoundPool";
 import * as Calculations from "./helpers/Calculations";
+import { InputController } from "./helpers/InputController";
 import { UserInterface } from "./helpers/UserInterface";
 
 const canvas = document.createElement("canvas");
@@ -89,7 +88,7 @@ function gameLoop() {
 }
 
 // InputController.bindKey("Escape", UserInterface.toggleMenu);
-InputController.bindKey("Escape", togglePause);
+InputController.bindKeyUp("Escape", togglePause);
 
 function newGame() {
   window.location.reload();

@@ -1,5 +1,4 @@
-﻿// http://blog.sklambert.com/html5-canvas-game-html5-audio-and-finishing-touches/#adding-html-audio
-export class SoundPool {
+﻿export class SoundPool {
   private pool: HTMLAudioElement[] = [];
   private currSound = 0;
 
@@ -12,6 +11,9 @@ export class SoundPool {
   }
 
   public setVolume(volume: number) {
+    if (volume > 1 || volume < 0) {
+      return;
+    }
     for (const player of this.pool) {
       player.volume = volume;
     }

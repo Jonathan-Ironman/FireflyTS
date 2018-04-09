@@ -1,12 +1,13 @@
-import { Point } from "./Point";
+import { Point } from "../classes/Point";
+import { GameUserActions } from "../enums/UserActions";
 
-const keysDown: { [key: string]: boolean } = {};
 let mousePosition = new Point(0, 0);
 const mouseDown: boolean[] = [];
 let mouseDownCount = 0;
 let disableContextMenu = false;
+const keysDown: { [key: string]: boolean } = {};
 const disabledKeys: { [key: string]: boolean } = {};
-const bindings: { [key: string]: () => void } = {};
+const keyUpBindings: { [key: string]: () => void } = {};
 
 let initialized = false;
 
@@ -19,17 +20,16 @@ export class InputController {
     return mouseDown as ReadonlyArray<boolean>;
   }
 
-  public static bindKey(key: KeyboardEvent["key"], callback: () => void) {
-    bindings[key] = callback;
+  public static bindKeyUp(key: KeyboardEvent["code"], callback: () => void) {
+    keyUpBindings[key] = callback;
   }
 
-  public static removeBind(key: KeyboardEvent["key"]) {
-    delete bindings[key];
+  public static removeKeyUpBind(key: KeyboardEvent["code"]) {
+    delete keyUpBindings[key];
   }
 
   public static getKeysDown() {
-    // TODO: make readonly
-    return keysDown;
+    return keysDown as Readonly<typeof keysDown>;
   }
 
   public static init() {
@@ -44,16 +44,19 @@ export class InputController {
     });
 
     document.addEventListener("keydown", event => {
-      if (disabledKeys[event.key]) {
+      if (disabledKeys[event.code]) {
         return event.preventDefault();
       }
-      keysDown[event.key] = true;
+      keysDown[event.code] = true;
     });
 
     document.addEventListener("keyup", event => {
-      keysDown[event.key] = false;
-      if (bindings[event.key]) {
-        bindings[event.key]();
+      keysDown[event.code] = false;
+      if (disabledKeys[event.code]) {
+        return event.preventDefault();
+      }
+      if (keyUpBindings[event.code]) {
+        keyUpBindings[event.code]();
       }
     });
 
@@ -74,11 +77,11 @@ export class InputController {
     initialized = true;
   }
 
-  public static disableKeys(keys: Array<KeyboardEvent["key"]>) {
+  public static disableKeys(keys: Array<KeyboardEvent["code"]>) {
     keys.forEach(key => (disabledKeys[key] = true));
   }
 
-  public static enableKeys(keys: Array<KeyboardEvent["key"]>) {
+  public static enableKeys(keys: Array<KeyboardEvent["code"]>) {
     keys.forEach(key => delete disabledKeys[key]);
   }
 

@@ -1,11 +1,11 @@
 import * as Calculations from "../helpers/Calculations";
+import { SoundPool } from "../helpers/SoundPool";
 import { IDirection } from "../interfaces/IDirection";
 import { Entity } from "./Entity";
 import { ExplosionSprite } from "./Explosion";
 import { doubleLaserShot } from "./Laser";
 import { Point } from "./Point";
 import { Projectile } from "./Projectile";
-import { SoundPool } from "./SoundPool";
 
 const laserSound = new SoundPool("sound/effects/laser.wav", 0.02, 200);
 

@@ -1,8 +1,8 @@
 import { getRandomInt } from "../helpers/Calculations";
+import { SoundPool } from "../helpers/SoundPool";
 import { IRenderObect } from "../interfaces/IRenderObject";
 import { Point } from "./Point";
 import { RenderObject } from "./RenderObject";
-import { SoundPool } from "./SoundPool";
 
 const explosionSound = new SoundPool("sound/effects/explosion1.wav", 0.1, 300);
 const explosionSprites = [
