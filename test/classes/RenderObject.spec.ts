@@ -2,7 +2,7 @@ import { Point } from "../../src/classes/Point";
 import { RenderObject } from "../../src/classes/RenderObject";
 import { IRenderObect } from "../../src/interfaces/IRenderObject";
 
-const imageSrc = "image/objects/test80x100.png";
+const imageSrc = "../images/Test80x100.png";
 
 const objectConfig: IRenderObect = {
   imageSrc,
