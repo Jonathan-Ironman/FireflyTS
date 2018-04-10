@@ -1,8 +1,10 @@
+import { GameUserActions } from "../enums/UserActions";
 import { IKeyDownBindings, IKeyUpBindings } from "../interfaces/ISettings";
+import { InputController } from "./InputController";
 import { SettingController } from "./SettingsController";
 
-export const keyDownSettings = {};
-export const keyUpSettings = {};
+export const keyDownSettings: IKeyDownBindings = {};
+export const keyUpSettings: IKeyUpBindings = {};
 
 const defaultKeyDownSettings: IKeyDownBindings = {
   Fire1: "Space",
@@ -21,6 +23,12 @@ const defaultKeyUpSettings: IKeyUpBindings = {
   VolumeUp: "NumpadAdd"
 };
 
+const keysDown = InputController.getKeysDown();
+
+export function actionKeyIsActive(action: GameUserActions) {
+  return !!keysDown[keyDownSettings[action] as string];
+}
+
 export function updateKeyboardSettings() {
   Object.assign(
     keyDownSettings,
@@ -33,3 +41,5 @@ export function updateKeyboardSettings() {
     SettingController.loadSetting("keyUpBindings")
   );
 }
+
+updateKeyboardSettings();

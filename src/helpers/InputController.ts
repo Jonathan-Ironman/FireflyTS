@@ -4,7 +4,7 @@ import { GameUserActions } from "../enums/UserActions";
 let mousePosition = new Point(0, 0);
 const mouseDown: boolean[] = [];
 let mouseDownCount = 0;
-let disableContextMenu = false;
+let disableContextMenu = true;
 const keysDown: { [key: string]: boolean } = {};
 const disabledKeys: { [key: string]: boolean } = {};
 const keyUpBindings: { [key: string]: () => void } = {};
@@ -13,7 +13,7 @@ let initialized = false;
 
 export class InputController {
   public static getMousePosition() {
-    return mousePosition;
+    return mousePosition as Readonly<Point>;
   }
 
   public static getMouseDownButtons() {

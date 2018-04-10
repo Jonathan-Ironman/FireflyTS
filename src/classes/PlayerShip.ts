@@ -1,5 +1,7 @@
 import { MouseButtonMap } from "../enums/MouseButtonMap";
+import { GameUserActions } from "../enums/UserActions";
 import { InputController } from "../helpers/InputController";
+import { actionKeyIsActive } from "../helpers/KeyboardSettings";
 import { IDirection } from "../interfaces/IDirection";
 import { Point } from "./Point";
 import { RenderObject } from "./RenderObject";
@@ -24,23 +26,28 @@ export class PlayerShip extends Ship {
   public update() {
     this.turn(InputController.getMousePosition());
 
-    const keysDown = InputController.getKeysDown();
     const directions: IDirection = {
-      back: keysDown.ArrowDown || keysDown.KeyS,
-      forward: keysDown.ArrowUp || keysDown.KeyW,
-      left: keysDown.ArrowLeft || keysDown.KeyA,
-      right: keysDown.ArrowRight || keysDown.KeyD
+      back: actionKeyIsActive(GameUserActions.MoveBack),
+      forward: actionKeyIsActive(GameUserActions.MoveForward),
+      left: actionKeyIsActive(GameUserActions.MoveLeft),
+      right: actionKeyIsActive(GameUserActions.MoveRight)
     };
     const currentPosition = this.center;
     this.move(directions);
     const newPosition = this.center;
     RenderObject.displaceAll(currentPosition, newPosition);
 
-    if (InputController.getMouseDownButtons()[MouseButtonMap.LEFT]) {
+    if (
+      actionKeyIsActive(GameUserActions.Fire1) ||
+      InputController.getMouseDownButtons()[MouseButtonMap.LEFT]
+    ) {
       this.firePrimary();
     }
 
-    if (keysDown.Space) {
+    if (
+      actionKeyIsActive(GameUserActions.Fire2) ||
+      InputController.getMouseDownButtons()[MouseButtonMap.RIGHT]
+    ) {
       this.fireSecondary();
     }
 
