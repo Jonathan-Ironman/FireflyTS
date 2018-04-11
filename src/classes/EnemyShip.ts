@@ -31,7 +31,7 @@ export class EnemyShip extends Ship {
   private attack(target: Entity) {
     this.turn(target.center);
 
-    const playerFacing = Calculations.isFacing(target, this);
+    const playerFacing = Entity.isFacing(target, this);
     let directions: IDirection = {};
     if (playerFacing) {
       directions = {
@@ -42,6 +42,10 @@ export class EnemyShip extends Ship {
     } else if (Point.getDistance(this.center, target.center) < 300) {
       directions = {
         back: true
+      };
+    } else if (Point.getDistance(this.center, target.center) > 1000) {
+      directions = {
+        forward: true
       };
     }
     this.move(directions);

@@ -14,6 +14,16 @@ export class Entity extends RenderObject {
     return entity1.isCollidingWith(entity2);
   }
 
+  public static isFacing(entity1: Entity, entity2: Entity) {
+    let result = 0;
+    const diff = Point.getAngle(entity1.center, entity2.center) - entity1.angle;
+    if (Math.abs(diff) < 100) {
+      result = diff;
+    }
+
+    return result;
+  }
+
   public health = Infinity;
   public maxHealth = Infinity;
   public speedX = 0;
@@ -105,7 +115,7 @@ export class Entity extends RenderObject {
   }
 
   protected turn(point: Point) {
-    const targetAngle = Calculations.getAngle(this.center, point);
+    const targetAngle = Point.getAngle(this.center, point);
     const turnDegrees =
       Calculations.mod(targetAngle - this.angle + 180, 360) - 180;
 

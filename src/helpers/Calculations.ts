@@ -38,17 +38,6 @@ export function chance(percentage: number) {
   return Math.random() * 100 < percentage;
 }
 
-// Returns the angle if entity1 is facing entity2.
-export function isFacing(entity1: Entity, entity2: Entity) {
-  let result = 0;
-  const diff = Point.getAngle(entity1.center, entity2.center) - entity1.angle;
-  if (Math.abs(diff) < 100) {
-    result = diff;
-  }
-
-  return result;
-}
-
 // http://stackoverflow.com/a/16725715/2407212
 export function CCW(p1: Point, p2: Point, p3: Point) {
   return (p3.y - p1.y) * (p2.x - p1.x) > (p2.y - p1.y) * (p3.x - p1.x);
