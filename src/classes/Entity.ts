@@ -131,8 +131,7 @@ export class Entity extends RenderObject {
   private processStatus() {
     if (this.status.firing) {
       this.status.firing--;
-      // tslint:disable-next-line:no-unused-expression
-      new RenderObject({
+      const _ = new RenderObject({
         angle: this.angle,
         imageSrc: "images/objects/GunFlare.png",
         initialPosition: this.center,
@@ -142,13 +141,16 @@ export class Entity extends RenderObject {
 
     if (this.status.takingFire) {
       this.status.takingFire--;
-      // tslint:disable-next-line:no-unused-expression
-      new RenderObject({
+      const _ = new RenderObject({
         angle: this.angle,
         imageSrc: "images/objects/BulletImpact.png",
         initialPosition: this.center,
         lifeSpan: 1
       });
+    }
+
+    if (this.status.colliding) {
+      this.status.colliding--;
     }
   }
 }

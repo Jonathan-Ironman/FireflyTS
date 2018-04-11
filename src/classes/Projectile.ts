@@ -47,7 +47,7 @@ export class Projectile extends Entity {
   }
 
   public update() {
-    if (this.status.isColliding) {
+    if (this.status.colliding) {
       return this.destroy();
     }
 
@@ -59,8 +59,7 @@ export class Projectile extends Entity {
   }
 
   public destroy() {
-    // tslint:disable-next-line:no-unused-expression
-    new ExplosionSprite(this.center);
+    const _ = new ExplosionSprite(this.center);
     super.destroy();
   }
 }

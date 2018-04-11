@@ -6,7 +6,7 @@ import { Point } from "./Point";
 import { Ship } from "./Ship";
 
 export class EnemyShip extends Ship {
-  public health = 50;
+  public health = 200;
   public shield = 0;
 
   constructor(imageSrc = "images/objects/enemy1.png", initialPosition: Point) {

@@ -20,7 +20,7 @@ let _ = new Parallax(1.05, "images/repeat.png");
 _ = new Parallax(4, "images/stars.png");
 _ = new Parallax(32, "images/stars.png");
 const Firefly = new PlayerShip();
-const enemies = 4;
+const enemies = 5;
 const gameObjects = RenderObject.getObjectList();
 const playlist = [
   "sound/music/ambientmain_0.ogg",
@@ -75,14 +75,12 @@ function gameLoop() {
 
   // Deal impact damage
   entityList.forEach(e => {
-    if (e.impactDamage) {
-      const colliders = entityList.forEach(i => {
-        if (e.isCollidingWith(i)) {
-          i.health -= e.impactDamage;
-          i.status.isColliding = 1;
-        }
-      });
-    }
+    const colliders = entityList.forEach(i => {
+      if (e.isCollidingWith(i)) {
+        i.status.colliding = 1;
+        i.health -= e.impactDamage;
+      }
+    });
   });
 
   UserInterface.showHealth(renderingContext, Firefly);
