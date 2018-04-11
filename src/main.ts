@@ -79,6 +79,7 @@ function gameLoop() {
       const colliders = entityList.forEach(i => {
         if (e.isCollidingWith(i)) {
           i.health -= e.impactDamage;
+          i.status.isColliding = 1;
         }
       });
     }

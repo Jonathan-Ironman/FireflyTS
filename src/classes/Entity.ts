@@ -28,7 +28,7 @@ export class Entity extends RenderObject {
   public maxHealth = Infinity;
   public speedX = 0;
   public speedY = 0;
-  public impactDamage = 1;
+  public impactDamage = 0;
   public status: IStatus = {};
   public faction?: string;
   public owner?: Entity;

@@ -3,4 +3,5 @@ export interface IStatus {
   takingFire?: number;
   firing?: number;
   firingSecondary?: number;
+  isColliding?: number;
 }

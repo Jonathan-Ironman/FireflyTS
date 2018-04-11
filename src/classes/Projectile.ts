@@ -47,6 +47,10 @@ export class Projectile extends Entity {
   }
 
   public update() {
+    if (this.status.isColliding) {
+      return this.destroy();
+    }
+
     if (this.target) {
       super.turn(this.target.center);
     }
