@@ -130,7 +130,6 @@ export class Entity extends RenderObject {
 
   private processStatus() {
     if (this.status.firing) {
-      this.status.firing--;
       const _ = new RenderObject({
         angle: this.angle,
         imageSrc: "images/objects/GunFlare.png",
@@ -140,7 +139,6 @@ export class Entity extends RenderObject {
     }
 
     if (this.status.takingFire) {
-      this.status.takingFire--;
       const _ = new RenderObject({
         angle: this.angle,
         imageSrc: "images/objects/BulletImpact.png",
@@ -149,8 +147,10 @@ export class Entity extends RenderObject {
       });
     }
 
-    if (this.status.colliding) {
-      this.status.colliding--;
+    for (const key in this.status) {
+      if (this.status[key] > 0) {
+        this.status[key]--;
+      }
     }
   }
 }
