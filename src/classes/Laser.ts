@@ -15,11 +15,7 @@ const laserRange = 10000;
 export function doubleLaserShot(owner: Ship) {
   const targets = Entity.getEntityList().filter(t => t !== owner);
 
-  let endpoint = Calculations.pointFromAngle(
-    owner.center,
-    owner.angle,
-    laserRange
-  );
+  let endpoint = Point.pointFromAngle(owner.center, owner.angle, laserRange);
   const intersecting = [];
 
   for (const entity of targets) {
@@ -34,7 +30,7 @@ export function doubleLaserShot(owner: Ship) {
 
   // Only hit closest target.
   for (const intersect of intersecting) {
-    distance2 = Calculations.lineDistance(owner.center, intersect.center);
+    distance2 = Point.getDistance(owner.center, intersect.center);
     if (distance2 < distance1) {
       distance1 = distance2;
       target = intersect;
@@ -45,27 +41,15 @@ export function doubleLaserShot(owner: Ship) {
     target.health -= laserDamage;
     target.status.takingFire = 6;
 
-    endpoint = Calculations.pointFromAngle(
-      owner.center,
-      owner.angle,
-      distance1
-    );
+    endpoint = Point.pointFromAngle(owner.center, owner.angle, distance1);
   }
 
   // Draw double laser.
   const offset = 12;
-  const p1 = Calculations.pointFromAngle(
-    owner.center,
-    owner.angle - 90,
-    offset
-  );
-  const p2 = Calculations.pointFromAngle(
-    owner.center,
-    owner.angle - 90,
-    -offset
-  );
-  const t1 = Calculations.pointFromAngle(endpoint, owner.angle - 90, offset);
-  const t2 = Calculations.pointFromAngle(endpoint, owner.angle - 90, -offset);
+  const p1 = Point.pointFromAngle(owner.center, owner.angle - 90, offset);
+  const p2 = Point.pointFromAngle(owner.center, owner.angle - 90, -offset);
+  const t1 = Point.pointFromAngle(endpoint, owner.angle - 90, offset);
+  const t2 = Point.pointFromAngle(endpoint, owner.angle - 90, -offset);
 
   renderContext.beginPath();
   renderContext.moveTo(p1.x, p1.y);

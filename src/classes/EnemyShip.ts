@@ -39,7 +39,7 @@ export class EnemyShip extends Ship {
         left: playerFacing > 0,
         right: playerFacing < 0
       };
-    } else if (Calculations.lineDistance(this.center, target.center) < 300) {
+    } else if (Point.getDistance(this.center, target.center) < 300) {
       directions = {
         back: true
       };
