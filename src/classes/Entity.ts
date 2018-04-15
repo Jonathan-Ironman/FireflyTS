@@ -64,9 +64,11 @@ export class Entity extends RenderObject {
   public isCollidingWith(entity: Entity) {
     return !(
       this === entity ||
-      this.owner === entity ||
-      this === entity.owner ||
-      this.owner === entity.owner ||
+      (this.owner !== undefined &&
+        entity.owner !== undefined &&
+        (this.owner === entity ||
+          this === entity.owner ||
+          this.owner === entity.owner)) ||
       this.center.x + this.width / 2 < entity.center.x - entity.width / 2 ||
       this.center.y + this.height / 2 < entity.center.y - entity.height / 2 ||
       this.center.x - this.width / 2 > entity.center.x + entity.width / 2 ||
