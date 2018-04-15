@@ -1,6 +1,7 @@
 import { Entity } from "../../src/classes/Entity";
 import { Point } from "../../src/classes/Point";
 import { RenderObject } from "../../src/classes/RenderObject";
+// jest.mock("../../src/classes/RenderObject");
 
 const imageSrc = "../../public/images/Test80x100.png";
 const defaultPosition = new Point(10, 20);
@@ -34,5 +35,47 @@ describe("Entity", () => {
     entity.health = 0;
     entity.update();
     expect(spy).toBeCalled();
+  });
+
+  test.skip("Status counter should be decreased by one after update", () => {
+    const entity = new Entity(imageSrc, defaultPosition);
+    entity.status.burning = 2;
+    entity.update();
+    expect(entity.status.burning).toBe(1);
+  });
+
+  test("Entity collision check: same position", () => {
+    const entity1 = new Entity(imageSrc, new Point(0, 0));
+    const entity2 = new Entity(imageSrc, new Point(0, 0));
+
+    expect(Entity.testCollision(entity1, entity2)).toBe(true);
+  });
+
+  test("Entity collision check: north", () => {
+    const entity1 = new Entity(imageSrc, new Point(0, 0));
+    const entity2 = new Entity(imageSrc, new Point(0, 200));
+
+    expect(Entity.testCollision(entity1, entity2)).toBe(false);
+  });
+
+  test("Entity collision check: east", () => {
+    const entity1 = new Entity(imageSrc, new Point(0, 0));
+    const entity2 = new Entity(imageSrc, new Point(200, 0));
+
+    expect(Entity.testCollision(entity1, entity2)).toBe(false);
+  });
+
+  test("Entity collision check: south", () => {
+    const entity1 = new Entity(imageSrc, new Point(0, 200));
+    const entity2 = new Entity(imageSrc, new Point(0, 0));
+
+    expect(Entity.testCollision(entity1, entity2)).toBe(false);
+  });
+
+  test("Entity collision check: west", () => {
+    const entity1 = new Entity(imageSrc, new Point(200, 0));
+    const entity2 = new Entity(imageSrc, new Point(0, 0));
+
+    expect(Entity.testCollision(entity1, entity2)).toBe(false);
   });
 });
