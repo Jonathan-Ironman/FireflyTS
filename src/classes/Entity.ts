@@ -51,7 +51,7 @@ export class Entity extends RenderObject {
   protected turnSpeed = 0;
   protected initialized = false;
 
-  private _health = Infinity;
+  private _health = 1;
 
   constructor(imageSrc: string, initialPosition: Point) {
     super({ imageSrc, initialPosition });
