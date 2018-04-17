@@ -1,6 +1,4 @@
-import * as Calculations from "../helpers/Calculations";
 import { SoundPool } from "../helpers/SoundPool";
-import { IDirection } from "../interfaces/IDirection";
 import { Entity } from "./Entity";
 import { ExplosionSprite } from "./Explosion";
 import { doubleLaserShot } from "./Laser";
@@ -11,7 +9,6 @@ const laserSound = new SoundPool("sound/effects/laser.wav", 0.02, 200);
 
 export class Ship extends Entity {
   public health = 50;
-  public shield = 0;
   public cooldown = 0;
   public cooldownTime = 20;
   public acceleration = 0.3;

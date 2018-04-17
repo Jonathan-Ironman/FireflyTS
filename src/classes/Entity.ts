@@ -24,8 +24,11 @@ export class Entity extends RenderObject {
     return result;
   }
 
-  public health = Infinity;
   public maxHealth = Infinity;
+  public shield = 0;
+  public maxShield = 0;
+  public energy = 0;
+  public maxEnergy = 0;
   public speedX = 0;
   public speedY = 0;
   public impactDamage = 0;
@@ -33,8 +36,22 @@ export class Entity extends RenderObject {
   public faction?: string;
   public owner?: Entity;
   public acceleration = 0;
+
+  public get health() {
+    return this._health;
+  }
+  public set health(newHealth) {
+    if (newHealth < this._health) {
+      this.takeDamage(this._health - newHealth);
+    } else {
+      this._health = newHealth;
+    }
+  }
+
   protected turnSpeed = 0;
   protected initialized = false;
+
+  private _health = Infinity;
 
   constructor(imageSrc: string, initialPosition: Point) {
     super({ imageSrc, initialPosition });
@@ -48,6 +65,15 @@ export class Entity extends RenderObject {
 
     if (this.health <= 0) {
       return this.destroy();
+    }
+
+    if (this.energy < this.maxEnergy) {
+      this.energy++;
+    }
+
+    if (this.shield < this.maxShield && this.energy > 0) {
+      this.energy--;
+      this.shield += 0.1;
     }
 
     this.processStatus();
@@ -80,6 +106,8 @@ export class Entity extends RenderObject {
     if (!this.initialized) {
       this.initialized = true;
       this.maxHealth = this.health;
+      this.maxShield = this.shield;
+      this.maxEnergy = this.energy;
     }
   }
 
@@ -153,6 +181,16 @@ export class Entity extends RenderObject {
       if (this.status[key] > 0) {
         this.status[key]--;
       }
+    }
+  }
+
+  private takeDamage(damage: number) {
+    if (this.shield >= damage) {
+      this.shield -= damage;
+    } else {
+      damage -= this.shield;
+      this.shield = 0;
+      this._health -= damage;
     }
   }
 }

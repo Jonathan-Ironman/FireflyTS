@@ -9,12 +9,12 @@ import { Ship } from "./Ship";
 
 export class PlayerShip extends Ship {
   public health = 500;
-  public shield = 0;
+  public shield = 10;
+  public energy = 10;
   public acceleration = 0.8;
   public cooldownTime = 5;
   public inaccuracy = 0;
   public turnSpeed = 6;
-  public alive = true;
 
   constructor() {
     super(
@@ -52,10 +52,5 @@ export class PlayerShip extends Ship {
     }
 
     super.update();
-  }
-
-  public destroy() {
-    this.alive = false;
-    super.destroy();
   }
 }

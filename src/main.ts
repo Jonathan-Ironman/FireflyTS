@@ -83,7 +83,7 @@ function gameLoop() {
     });
   });
 
-  UserInterface.showHealth(renderingContext, Firefly);
+  UserInterface.showStats(renderingContext, Firefly);
 }
 
 // InputController.bindKey("Escape", UserInterface.toggleMenu);

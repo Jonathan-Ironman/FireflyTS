@@ -7,7 +7,8 @@ import { Ship } from "./Ship";
 
 export class EnemyShip extends Ship {
   public health = 200;
-  public shield = 0;
+  public shield = 20;
+  public energy = 10;
 
   constructor(imageSrc = "images/objects/enemy1.png", initialPosition: Point) {
     super(imageSrc, initialPosition);
