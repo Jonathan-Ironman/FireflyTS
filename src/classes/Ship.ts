@@ -34,8 +34,7 @@ export class Ship extends Entity {
   }
 
   public destroy() {
-    // tslint:disable-next-line:no-unused-expression
-    new ExplosionSprite(this.center);
+    const _ = new ExplosionSprite(this.center);
     super.destroy();
   }
 
@@ -52,11 +51,7 @@ export class Ship extends Entity {
       return;
     }
     this.status.firing = 1;
-
-    // const offset = this.width / 2.4;
-    // tslint:disable-next-line:no-unused-expression
-    new Projectile(this, "dumbFire");
-
+    const _ = new Projectile(this, "dumbFire");
     this.cooldown = this.cooldownTime;
     laserSound.play();
   }
