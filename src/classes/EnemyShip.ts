@@ -1,3 +1,4 @@
+import { Factions } from "../enums/factions";
 import * as Calculations from "../helpers/Calculations";
 import { IDirection } from "../interfaces/IDirection";
 import { Entity } from "./Entity";
@@ -9,6 +10,7 @@ export class EnemyShip extends Ship {
   public health = 200;
   public shield = 20;
   public energy = 10;
+  public readonly faction = Factions.Shivan;
 
   constructor(imageSrc = "images/objects/enemy1.png", initialPosition: Point) {
     super(imageSrc, initialPosition);

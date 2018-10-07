@@ -1,3 +1,4 @@
+import { Factions } from "../enums/factions";
 import * as Calculations from "../helpers/Calculations";
 import { IDirection } from "../interfaces/IDirection";
 import { IStatus } from "../interfaces/IStatus";
@@ -33,7 +34,7 @@ export class Entity extends RenderObject {
   public speedY = 0;
   public impactDamage = 0;
   public status: IStatus = {};
-  public faction?: string;
+  public faction?: Factions;
   public owner?: Entity;
   public acceleration = 0;
 
@@ -88,13 +89,15 @@ export class Entity extends RenderObject {
   }
 
   public isCollidingWith(entity: Entity) {
-    return !(
+    const shouldNotCheck =
       this === entity ||
-      (this.owner !== undefined &&
-        entity.owner !== undefined &&
-        (this.owner === entity ||
-          this === entity.owner ||
-          this.owner === entity.owner)) ||
+      this.owner === entity ||
+      this === entity.owner ||
+      this.owner === entity.owner ||
+      (this.faction !== undefined && this.faction === entity.faction);
+
+    return !(
+      shouldNotCheck ||
       this.center.x + this.width / 2 < entity.center.x - entity.width / 2 ||
       this.center.y + this.height / 2 < entity.center.y - entity.height / 2 ||
       this.center.x - this.width / 2 > entity.center.x + entity.width / 2 ||

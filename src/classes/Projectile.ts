@@ -33,6 +33,7 @@ export class Projectile extends Entity {
     const properties = projectileTypes[type];
 
     this.owner = owner;
+    this.faction = owner.faction;
     this.target = target;
 
     this.speedX = owner.speedX;
