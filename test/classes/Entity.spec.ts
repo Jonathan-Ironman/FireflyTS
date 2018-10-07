@@ -1,6 +1,7 @@
 import { Entity } from "../../src/classes/Entity";
 import { Point } from "../../src/classes/Point";
 import { RenderObject } from "../../src/classes/RenderObject";
+import { Factions } from "../../src/enums/factions";
 // jest.mock("../../src/classes/RenderObject");
 
 const imageSrc = "../../public/images/Test80x100.png";
@@ -12,7 +13,7 @@ describe("Entity", () => {
   });
 
   test("Add new entities to the entity list", () => {
-    const entity = new Entity(imageSrc, defaultPosition);
+    const _ = new Entity(imageSrc, defaultPosition);
     expect(Entity.getEntityList().length).toBe(1);
   });
 
@@ -75,6 +76,32 @@ describe("Entity", () => {
   test("Entity collision check: west", () => {
     const entity1 = new Entity(imageSrc, new Point(200, 0));
     const entity2 = new Entity(imageSrc, new Point(0, 0));
+
+    expect(Entity.testCollision(entity1, entity2)).toBe(false);
+  });
+
+  test("Entity collision check: same faction", () => {
+    const entity1 = new Entity(imageSrc, defaultPosition);
+    const entity2 = new Entity(imageSrc, defaultPosition);
+    entity1.faction = entity2.faction = Factions.Shivan;
+
+    expect(Entity.testCollision(entity1, entity2)).toBe(false);
+  });
+
+  test("Entity collision check: owned by", () => {
+    const entity1 = new Entity(imageSrc, defaultPosition);
+    const entity2 = new Entity(imageSrc, defaultPosition);
+    entity1.owner = entity2;
+
+    expect(Entity.testCollision(entity1, entity2)).toBe(false);
+  });
+
+  test("Entity collision check: same owner", () => {
+    const entity1 = new Entity(imageSrc, defaultPosition);
+    const entity2 = new Entity(imageSrc, defaultPosition);
+    const entity3 = new Entity(imageSrc, new Point(1000, 1000));
+
+    entity1.owner = entity2.owner = entity3;
 
     expect(Entity.testCollision(entity1, entity2)).toBe(false);
   });

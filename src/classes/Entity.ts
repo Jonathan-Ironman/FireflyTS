@@ -93,7 +93,7 @@ export class Entity extends RenderObject {
       this === entity ||
       this.owner === entity ||
       this === entity.owner ||
-      this.owner === entity.owner ||
+      (this.owner !== undefined && this.owner === entity.owner) ||
       (this.faction !== undefined && this.faction === entity.faction);
 
     return !(
