@@ -4,8 +4,7 @@
   "description": "Firefly TypeScript version",
   "main": "main.ts",
   "scripts": {
-    "test:travis":
-      "jest --coverage  --collectCoverageFrom=src/**/*.ts && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "test:travis": "jest --coverage  --collectCoverageFrom=src/**/*.ts && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "test": "jest",
     "test:coverage": "jest --coverage --collectCoverageFrom=src/**/*.ts",
     "watch": "webpack --watch",
@@ -15,7 +14,12 @@
     "type": "git",
     "url": "git+https://github.com/Jonathan-Ironman/FireflyTS.git"
   },
-  "keywords": ["Firefly", "Game", "Space", "Shooter"],
+  "keywords": [
+    "Firefly",
+    "Game",
+    "Space",
+    "Shooter"
+  ],
   "author": "Jonathan IJzerman",
   "license": "MIT",
   "bugs": {
@@ -23,25 +27,29 @@
   },
   "homepage": "https://github.com/Jonathan-Ironman/FireflyTS#readme",
   "devDependencies": {
-    "@types/jest": "^22.2.2",
-    "@types/jquery": "^3.3.1",
-    "@types/node": "^9.6.1",
-    "coveralls": "^3.0.0",
+    "@types/jest": "^22.2.3",
+    "@types/jquery": "^3.3.12",
+    "@types/node": "^9.6.34",
+    "coveralls": "^3.0.2",
     "eslint": "^4.19.1",
-    "eslint-config-tc": "^2.3.0",
-    "jest": "^22.4.3",
-    "ts-jest": "^22.4.2",
-    "ts-loader": "^4.1.0",
+    "eslint-config-tc": "^2.4.0",
+    "jest": "^22.4.4",
+    "ts-jest": "^22.4.6",
+    "ts-loader": "^4.5.0",
     "ts-node": "^5.0.1",
-    "tslint": "^5.9.1",
-    "tslint-clean-code": "^0.2.6",
-    "tslint-config-prettier": "^1.10.0",
-    "typescript": "^2.8.1",
-    "webpack": "^4.4.1",
-    "webpack-cli": "^2.0.13"
+    "tslint": "^5.11.0",
+    "tslint-clean-code": "^0.2.7",
+    "tslint-config-prettier": "^1.15.0",
+    "typescript": "^2.9.2",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^2.1.5"
   },
   "jest": {
-    "moduleFileExtensions": ["ts", "tsx", "js"],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
     "transform": {
       "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
