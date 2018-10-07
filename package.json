@@ -4,7 +4,7 @@
   "description": "Firefly TypeScript version",
   "main": "main.ts",
   "scripts": {
-    "test:travis": "jest --coverage  --collectCoverageFrom=src/**/*.ts && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "test:travis": "jest --coverage --collectCoverageFrom=src/**/*.ts && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "test": "jest",
     "test:coverage": "jest --coverage --collectCoverageFrom=src/**/*.ts",
     "watch": "webpack --watch",
