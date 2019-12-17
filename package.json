@@ -41,7 +41,7 @@
     "tslint-clean-code": "^0.2.7",
     "tslint-config-prettier": "^1.15.0",
     "typescript": "^2.9.2",
-    "webpack": "^4.20.2",
+    "webpack": "^4.41.3",
     "webpack-cli": "^3.1.1"
   },
   "jest": {
