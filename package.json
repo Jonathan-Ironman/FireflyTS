@@ -28,8 +28,8 @@
   "homepage": "https://github.com/Jonathan-Ironman/FireflyTS#readme",
   "devDependencies": {
     "@types/jest": "^22.2.3",
-    "@types/jquery": "^3.5.0",
-    "@types/node": "^9.6.56",
+    "@types/jquery": "^3.5.5",
+    "@types/node": "^9.6.61",
     "coveralls": "^3.1.0",
     "eslint": "^4.19.1",
     "eslint-config-tc": "^2.4.0",
@@ -41,7 +41,7 @@
     "tslint-clean-code": "^0.2.10",
     "tslint-config-prettier": "^1.18.0",
     "typescript": "^2.9.2",
-    "webpack": "^4.43.0",
+    "webpack": "^4.46.0",
     "webpack-cli": "^3.3.12"
   },
   "jest": {
