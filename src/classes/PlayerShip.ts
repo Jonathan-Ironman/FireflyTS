@@ -8,9 +8,6 @@ import { RenderObject } from "./RenderObject";
 import { Ship } from "./Ship";
 
 export class PlayerShip extends Ship {
-  public health = 500;
-  public shield = 10;
-  public energy = 10;
   public acceleration = 0.8;
   public cooldownTime = 5;
   public inaccuracy = 0;
@@ -21,6 +18,9 @@ export class PlayerShip extends Ship {
       "images/objects/Firefly.png",
       new Point(window.innerWidth / 2 - 40, window.innerHeight / 2 - 40)
     );
+    this.health = 500;
+    this.shield = 10;
+    this.energy = 10;
   }
 
   public update() {

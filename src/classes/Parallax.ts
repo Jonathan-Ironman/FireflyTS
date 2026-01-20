@@ -48,8 +48,11 @@ export class Parallax extends RenderObject {
 
   protected onImageLoad() {
     super.onImageLoad();
-    this.pattern = renderContext.createPattern(this.image, "repeat");
-    Parallax.setPatternForImages(this.image.src, this.pattern);
+    const pattern = renderContext.createPattern(this.image, "repeat");
+    if (pattern) {
+      this.pattern = pattern;
+      Parallax.setPatternForImages(this.image.src, pattern);
+    }
   }
 
   private displace() {
