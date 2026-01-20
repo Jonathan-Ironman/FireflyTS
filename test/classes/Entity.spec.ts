@@ -35,7 +35,7 @@ describe("Entity", () => {
     const spy = jest.spyOn(entity, "destroy");
     entity.health = 0;
     entity.update();
-    expect(spy).toBeCalled();
+    expect(spy).toHaveBeenCalled();
   });
 
   test.skip("Status counter should be decreased by one after update", () => {

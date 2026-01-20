@@ -15,14 +15,14 @@ describe("RenderObject", () => {
   });
 
   test("Static method 'setDimensionsForImage' should be called once image is loaded", async () => {
-    const setDimensionForImageSpy = spyOn(
+    const setDimensionForImageSpy = jest.spyOn(
       RenderObject,
       "setDimensionsForImage"
     );
 
     const renderObject = new RenderObject(objectConfig);
     renderObject.image.dispatchEvent(new Event("load"));
-    await expect(setDimensionForImageSpy).toBeCalled();
+    await expect(setDimensionForImageSpy).toHaveBeenCalled();
   });
 
   test.skip("Object should get the correct dimensions once image is loaded", () => {

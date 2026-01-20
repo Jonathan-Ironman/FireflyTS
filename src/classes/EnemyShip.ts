@@ -7,13 +7,13 @@ import { Point } from "./Point";
 import { Ship } from "./Ship";
 
 export class EnemyShip extends Ship {
-  public health = 200;
-  public shield = 20;
-  public energy = 10;
   public readonly faction = Factions.Shivan;
 
   constructor(imageSrc = "images/objects/enemy1.png", initialPosition: Point) {
     super(imageSrc, initialPosition);
+    this.health = 200;
+    this.shield = 20;
+    this.energy = 10;
   }
 
   public update() {

@@ -8,7 +8,6 @@ import { Projectile } from "./Projectile";
 const laserSound = new SoundPool("sound/effects/laser.wav", 0.02, 200);
 
 export class Ship extends Entity {
-  public health = 50;
   public cooldown = 0;
   public cooldownTime = 20;
   public acceleration = 0.3;
@@ -17,6 +16,7 @@ export class Ship extends Entity {
 
   constructor(imageSrc: string, initialPosition: Point) {
     super(imageSrc, initialPosition);
+    this.health = 50;
   }
 
   public canFire() {
