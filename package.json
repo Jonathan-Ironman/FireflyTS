@@ -2,6 +2,9 @@
   "name": "firefly",
   "version": "0.0.1",
   "description": "Firefly TypeScript version",
+  "engines": {
+    "npm": ">=11"
+  },
   "main": "main.ts",
   "scripts": {
     "test:travis": "jest --coverage --collectCoverageFrom=src/**/*.ts && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
