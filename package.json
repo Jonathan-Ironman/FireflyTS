@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Firefly TypeScript version",
   "engines": {
-    "npm": ">=11"
+    "npm": ">=11.9.0"
   },
   "main": "main.ts",
   "scripts": {
